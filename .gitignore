@@ -1,0 +1,72 @@
+﻿# =========================================================
+# Git Ignore for UWB For Drone Project
+# =========================================================
+
+# --- Operating System Files ---
+*.lnk
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+*.bak
+
+# --- Temporary & Local Files ---
+tmp/
+temp/
+*.log
+
+# --- Node.js / Vite / Web GUI ---
+**/node_modules/
+**/dist/
+**/dist-ssr/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+
+# --- STM32 / Embedded Build Artifacts ---
+**/Debug/
+**/Release/
+**/[Cc]odexBuild*/
+*.o
+*.su
+*.d
+*.elf
+*.map
+*.hex
+*.bin
+*.axf
+
+# --- STM32CubeIDE / Eclipse Workspace Cache ---
+**/.metadata/
+**/.recommenders/
+
+# --- AI Tools & Agent Sessions ---
+.claude/
+.agents/
+.cursor/
+.gemini/
+.aider*
+Plan/
+
+# --- Environment & Credentials ---
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# --- Python Virtual Envs & Cache (for tools/) ---
+**/__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# --- Backups ---
+Backup/
+backup/

@@ -1,0 +1,40 @@
+{
+  "name": "uwb-gui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:telemetry-binary": "node scripts/test-telemetry-binary.mjs",
+    "test:telemetry-model": "node scripts/test-telemetry-model.mjs",
+    "test:telemetry": "node scripts/test-telemetry-binary.mjs && node scripts/test-telemetry-model.mjs",
+    "test:position": "node scripts/test-position-math.mjs",
+    "test:replay": "node scripts/test-replay-log.mjs",
+    "test:replay-harness": "vitest run src/lib/replayHarness.vitest.test.ts",
+    "replay:report": "node scripts/replay-report.mjs",
+    "test:anchor-state": "node scripts/test-anchor-state.mjs",
+    "test:range-filter-host": "node scripts/test-range-filter-host.mjs",
+    "test:legacy-adaptive-host": "node scripts/test-legacy-adaptive-host.mjs",
+    "test:motion-adaptive-host": "node scripts/test-motion-adaptive-host.mjs",
+    "test:tag-adaptive-syntax": "node scripts/test-tag-adaptive-syntax.mjs",
+    "test:core": "node scripts/test-telemetry-binary.mjs && node scripts/test-telemetry-model.mjs && node scripts/test-position-math.mjs && node scripts/test-replay-log.mjs && node scripts/test-anchor-state.mjs && node scripts/test-range-filter-host.mjs && node scripts/test-legacy-adaptive-host.mjs && node scripts/test-motion-adaptive-host.mjs && node scripts/test-tag-adaptive-syntax.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^1.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vitest": "^2.1.9"
+  }
+}
