@@ -44,40 +44,36 @@ Dự án triển khai một giải pháp **Indoor Positioning System (IPS)** ho�
 
 ```mermaid
 flowchart TD
-    subgraph ZONE["🏢 Khu Vực Bay (Indoor / GPS-denied)"]
+    subgraph ZONE["Khu Vực Bay (Indoor / GPS-denied)"]
         direction TB
-        A1["🔵 Anchor 1
-STM32F103 + DW1000"]
-        A2["🔵 Anchor 2
-STM32F103 + DW1000"]
-        A3["🔵 Anchor 3
-STM32F103 + DW1000"]
-        A4["🔵 Anchor 4
-STM32F103 + DW1000"]
-        TAG["🚁 Drone TAG
-STM32F103 + DW1000
-(Initiator / Master)"]
+        A1["Anchor 1
+(STM32F103 + DW1000)"]
+        A2["Anchor 2
+(STM32F103 + DW1000)"]
+        A3["Anchor 3
+(STM32F103 + DW1000)"]
+        A4["Anchor 4
+(STM32F103 + DW1000)"]
+        TAG["Drone TAG
+(STM32F103 + DW1000)
+Initiator / Master"]
     end
 
-    A1 -- "RF UWB\nDS-TWR Ranging" --> TAG
-    A2 -- "RF UWB\nDS-TWR Ranging" --> TAG
-    A3 -- "RF UWB\nDS-TWR Ranging" --> TAG
-    A4 -- "RF UWB\nDS-TWR Ranging" --> TAG
+    A1 -->|"RF UWB — DS-TWR"| TAG
+    A2 -->|"RF UWB — DS-TWR"| TAG
+    A3 -->|"RF UWB — DS-TWR"| TAG
+    A4 -->|"RF UWB — DS-TWR"| TAG
 
-    TAG -- "UART Binary\n115200 bps\nCRC16" --> ESP["📡 ESP32-S3\nWi-Fi Bridge\n(WebSocket Server :81)"]
+    TAG -->|"UART Binary 115200 bps + CRC16"| ESP["ESP32-S3
+Wi-Fi Bridge
+(WebSocket Server :81)"]
 
-    ESP -- "Wi-Fi\nJSON Broadcast" --> GUI["🖥️ Web GUI\nReact + Vite\n(Trilateration + Kalman 2D)"]
+    ESP -->|"Wi-Fi — JSON"| GUI["Web GUI (GCS)
+React + Vite + TypeScript
+Trilateration + Kalman 2D"]
 
-    TAG -- "USB Cable\nWeb Serial API\n(chế độ debug)" --> GUI
-
-    style ZONE fill:#e8f4f8,stroke:#2196F3,stroke-width:2px
-    style TAG fill:#ff9800,color:#fff,stroke:#e65100
-    style A1 fill:#2196F3,color:#fff,stroke:#1565C0
-    style A2 fill:#2196F3,color:#fff,stroke:#1565C0
-    style A3 fill:#2196F3,color:#fff,stroke:#1565C0
-    style A4 fill:#2196F3,color:#fff,stroke:#1565C0
-    style ESP fill:#4CAF50,color:#fff,stroke:#2E7D32
-    style GUI fill:#9C27B0,color:#fff,stroke:#6A1B9A
+    TAG -.->|"USB — Web Serial API
+(chế độ debug trực tiếp)"| GUI
 ```
 
 **Hai chế độ kết nối với GUI:**
