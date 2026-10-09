@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">UWB for Drone system architecture</title><desc id="desc">Four stationary STM32F103 and DW1000 Anchors exchange double-sided ranging messages with one mobile STM32 Tag. The Tag calibrates and filters ranges and sends binary telemetry at 115200 baud. A browser reads UART directly through a serial adapter, or an ESP32-S3 bridge parses it and sends JSON over WebSocket port 81. The browser estimates 2D position from fresh valid ranges.</desc>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto-start-reverse"><path d="M0 0 L8 3 L0 6Z" fill="#078b84"/></marker></defs>
+<rect width="1200" height="780" rx="24" fill="#f4f8fb"/>
+<g font-family="Segoe UI, Arial, sans-serif" fill="#16314d">
+<text x="48" y="58" font-size="32" font-weight="700">UWB for Drone / From radio ranges to 2D position</text>
+<text x="48" y="92" font-size="20" fill="#547086">Four Anchors - one Tag - serial or Wi-Fi ground station</text>
+<text x="48" y="134" font-size="22" font-weight="700">FIXED ANCHORS</text>
+<g fill="#16314d"><rect x="48" y="155" width="263" height="83" rx="14"/><rect x="48" y="261" width="263" height="83" rx="14"/><rect x="48" y="367" width="263" height="83" rx="14"/><rect x="48" y="473" width="263" height="83" rx="14"/></g>
+<g text-anchor="middle" fill="white" font-size="24" font-weight="600"><text x="179" y="190">A1 / 0x0001</text><text x="179" y="296">A2 / 0x0002</text><text x="179" y="402">A3 / 0x0003</text><text x="179" y="508">A4 / 0x0004</text></g>
+<g text-anchor="middle" fill="#ccefeb" font-size="18"><text x="179" y="220">STM32F103 + DW1000</text><text x="179" y="326">STM32F103 + DW1000</text><text x="179" y="432">STM32F103 + DW1000</text><text x="179" y="538">STM32F103 + DW1000</text></g>
+<g stroke="#078b84" stroke-width="3" fill="none" marker-start="url(#a)" marker-end="url(#a)"><path d="M322 198 L438 302"/><path d="M322 303 L438 343"/><path d="M322 409 L438 385"/><path d="M322 514 L438 428"/></g>
+<rect x="451" y="256" width="283" height="232" rx="18" fill="#e7f6f3" stroke="#acd7cf" stroke-width="2"/>
+<g text-anchor="middle"><text x="592" y="296" font-size="28" font-weight="700">MOBILE TAG</text><text x="592" y="330" font-size="21">STM32F103 + DW1000</text><text x="592" y="369" font-size="22">DS-TWR scheduler</text><text x="592" y="402" font-size="21">Calibration + filter</text><text x="592" y="447" font-size="20" fill="#547086">Binary INFO / RANGE / STATS</text><text x="592" y="475" font-size="19" fill="#547086">CRC16 / status / age</text></g>
+<rect x="862" y="169" width="290" height="148" rx="18" fill="#16314d"/>
+<g text-anchor="middle"><text x="1007" y="211" font-size="25" font-weight="700" fill="white">ESP32-S3 BRIDGE</text><text x="1007" y="247" font-size="21" fill="#ccefeb">UART binary parser</text><text x="1007" y="280" font-size="21" fill="#ccefeb">JSON over Wi-Fi</text></g>
+<path d="M744 300 H787 V242 H851" fill="none" stroke="#078b84" stroke-width="4" marker-end="url(#a)"/>
+<text x="760" y="143" font-size="20" fill="#547086">UART 115200 8N1</text>
+<rect x="862" y="500" width="290" height="160" rx="18" fill="#16314d"/>
+<g text-anchor="middle"><text x="1007" y="540" font-size="25" font-weight="700" fill="white">BROWSER GUI</text><text x="1007" y="575" font-size="21" fill="#ccefeb">2D solver + Kalman</text><text x="1007" y="608" font-size="20" fill="#ccefeb">Logging / calibration</text><text x="1007" y="640" font-size="19" fill="#ccefeb">Fresh valid ranges only</text></g>
+<path d="M1007 330 V489" stroke="#078b84" stroke-width="4" marker-end="url(#a)"/>
+<rect x="864" y="382" width="286" height="47" rx="8" fill="#f4f8fb"/><text x="1007" y="413" text-anchor="middle" font-size="22">WebSocket / port 81</text>
+<path d="M744 448 H791 V573 H851" fill="none" stroke="#078b84" stroke-width="4" marker-end="url(#a)"/>
+<text x="500" y="552" font-size="20" fill="#547086">Direct UART adapter</text><text x="500" y="581" font-size="20" fill="#547086">+ Web Serial</text>
+<text x="48" y="626" font-size="21" font-weight="600">POLL / RESP / FINAL / REPORT</text>
+<text x="48" y="660" font-size="20" fill="#547086">50 Hz is a scheduling target; inspect measured runtime rates.</text>
+<path d="M48 695 H1152" stroke="#d7e3ea" stroke-width="2"/>
+<text x="48" y="733" font-size="19" fill="#547086">Source: STM32_UWB/TAG, ESP32S3_TAG/TAG and GUI test/src</text>
+</g></svg>
